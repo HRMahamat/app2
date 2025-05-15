@@ -22,11 +22,7 @@ plot=st.sidebar.button("Afficher le graphe")
 if plot:
     st.text("La taille représente le paramètre primaire")
     st.text("La couleur représente le paramètre secondaire")
-    if state_select=="Global en Inde":
-        fig=px.scatter_mapbox(newdf, lat="Latitude", lon="Longitude", size=primary, color=secondary, zoom=4, size_max=35, mapbox_style="carto-positron", width=1200, height=700, hover_name="District")
-        st.plotly_chart(fig, use_container_width=True)
-    else:
-        fig = px.scatter_mapbox(newdf[newdf['State']==state_select], lat="Latitude", lon="Longitude", size=primary, color=secondary, zoom=4,
-                                size_max=35, mapbox_style="carto-positron", width=1200, height=700,
-                                hover_name="District")
-        st.plotly_chart(fig, use_container_width=True)
+    lg=newdf
+    if state_select!="Global en Inde": lg=newdf[newdf['State']==state_select]
+    fig=px.scatter_geo(lg, lat="Latitude", lon="Longitude", size=primary, color=secondary, projection="natural earth", width=1200, height=700, hover_name="District")
+    st.plotly_chart(fig, use_container_width=True)
