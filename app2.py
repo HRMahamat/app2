@@ -1,21 +1,9 @@
 import os
-import importlib
-import subprocess
-import sys
 import numpy as np
 import pandas as pd
+import plotly.express as px
 import streamlit as st
 
-def install_and_import(package_name, import_name=None):
-    module_name = import_name or package_name
-    try:
-        return importlib.import_module(module_name)
-    except ImportError:
-        print(f"Le module '{module_name}' n'est pas installé. Installation en cours...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
-        return importlib.import_module(module_name)
-        
-px = install_and_import("plotly", import_name="plotly.express")
 bdir = os.path.dirname(__file__)
 df=pd.read_csv(os.path.join(bdir, "", "india.csv"), sep=',')
 newdf=df
