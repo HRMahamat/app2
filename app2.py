@@ -15,7 +15,7 @@ def install_and_import(package_name, import_name=None):
         subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
         return importlib.import_module(module_name)
         
-px = install_and_import("plotly-express", import_name="plotly.express")
+px = install_and_import("plotly", import_name="plotly.express")
 bdir = os.path.dirname(__file__)
 df=pd.read_csv(os.path.join(bdir, "", "india.csv"), sep=',')
 newdf=df
