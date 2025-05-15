@@ -24,5 +24,5 @@ if plot:
     st.text("La couleur représente le paramètre secondaire")
     lg=newdf
     if state_select!="Global en Inde": lg=newdf[newdf['State']==state_select]
-    fig=px.scatter_geo(lg, lat="Latitude", lon="Longitude", size=primary, color=secondary, projection="natural earth", width=1200, height=700, hover_name="District")
+    fig=px.scatter_geo(lg, lat="Latitude", lon="Longitude", size=primary, color=secondary, size_max=35, projection="natural earth", width=1200, height=700, hover_name="District")
     st.plotly_chart(fig, use_container_width=True)
